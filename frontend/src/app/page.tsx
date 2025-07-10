@@ -309,6 +309,20 @@ export default function DashboardPage() {
               </NativeSelect.Root>
             </Box>
 
+            <Box>
+              <Text fontSize="sm" mb={1}>Export Excel</Text>
+              <Button 
+                size="sm" 
+                colorScheme="blue"
+                onClick={() => {
+                  // Add your button functionality here
+                  console.log('Button clicked');
+                }}
+              >
+                Export
+              </Button>
+            </Box>
+
           </HStack>
 
           <Separator my={2} mx={4} />
