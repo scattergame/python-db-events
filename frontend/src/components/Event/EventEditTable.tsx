@@ -25,6 +25,7 @@ interface EventTableProps {
 
 export interface EventTableRef {
   setSearchTerm: (term: string) => void;
+  getData: () => Event[];
 }
 
 const columnWidths = {
@@ -193,6 +194,9 @@ const EventEditTable = forwardRef<EventTableRef, EventTableProps>(({
     setSearchTerm: (term: string) => {
       setSearch(term);
     },
+    getData: () => {
+      return events;
+    }
   }));
 
   // Debounce input
