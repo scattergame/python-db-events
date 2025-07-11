@@ -12,7 +12,8 @@ import { EventTimeFilterType, ValidityFilterType } from '@/types/filters';
 import NewEventCard from '@/components/Event/NewEventCard';
 import EventFilters from '@/components/Event/EventFilters';
 import RefreshControls from '@/components/Event/RefreshControls';
-import { useEventRefresh } from '@/app/hooks/useEventRefresh';
+import { useEventRefresh } from '@/hooks/useEventRefresh';
+import { handleExportExcel } from '@/utils/exportExcel';
 
 export default function DashboardPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
@@ -62,11 +63,6 @@ export default function DashboardPage() {
   const handleSelectEvent = (event: Event | null) => {
     setSelectedEvent(event);
     setSelectedEventId(event?.id || null);
-  };
-
-  const handleExportExcel = () => {
-    // Add your export functionality here
-    console.log('Export Excel clicked');
   };
 
   const onRefreshComplete = useCallback(() => {
@@ -131,7 +127,7 @@ export default function DashboardPage() {
             validityFilter={validityFilter}
             setValidityFilter={setValidityFilter}
             onFilterChange={handleFilterChange}
-            onExportExcel={handleExportExcel}
+            onExportExcel={() => handleExportExcel(eventTableRef)}
           />
 
           <Separator my={2} mx={4} />
